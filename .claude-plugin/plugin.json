@@ -7,6 +7,5 @@
     "url": "https://github.com/daig"
   },
   "repository": "https://github.com/daig/claude-plugin-dev",
-  "license": "MIT",
-  "skills": ["../skills"]
+  "license": "MIT"
 }

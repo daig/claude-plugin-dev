@@ -72,13 +72,13 @@ Note the nested `source.source` - it's confusing but required.
    }
    ```
 
-2. **Wrong path format**
-   ```json
-   // Wrong (from plugin root)
-   { "skills": ["./skills"] }
+2. **Skills directory in wrong place**
+   ```
+   # Wrong - inside .claude-plugin
+   .claude-plugin/skills/
 
-   // Correct (from .claude-plugin/)
-   { "skills": ["../skills"] }
+   # Correct - at plugin root
+   my-plugin/skills/
    ```
 
 ## Skills Not Loading
@@ -104,11 +104,9 @@ Note the nested `source.source` - it's confusing but required.
    my-plugin/skills/     # At plugin root
    ```
 
-3. **Wrong path in plugin.json**
-   ```json
-   // Path is relative to .claude-plugin/
-   { "skills": ["../skills"] }
-   ```
+3. **Auto-discovery not working**
+   - Ensure `skills/` is at plugin root (not inside `.claude-plugin/`)
+   - Each skill needs `skills/skill-name/SKILL.md`
 
 ### Skill not auto-triggering
 
@@ -336,12 +334,10 @@ node servers/my-server.js
 
 ### Relative paths not working
 
-**Remember**: Paths in plugin.json are relative to `.claude-plugin/`:
+**Remember**: Skills/commands/agents/hooks are auto-discovered at plugin root. For MCP servers, use `${CLAUDE_PLUGIN_ROOT}`:
 
 ```json
 {
-  "skills": ["../skills"],      // Goes up to plugin root
-  "commands": ["../commands"],
   "mcpServers": {
     "my-server": {
       "args": ["${CLAUDE_PLUGIN_ROOT}/servers/server.js"]

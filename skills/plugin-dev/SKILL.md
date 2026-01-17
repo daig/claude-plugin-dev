@@ -37,10 +37,11 @@ my-plugin/
 {
   "name": "my-plugin",
   "version": "1.0.0",
-  "description": "My first Claude Code plugin",
-  "skills": ["../skills"]
+  "description": "My first Claude Code plugin"
 }
 ```
+
+Skills in `skills/` are auto-discovered - no need to specify the path.
 
 **Minimal SKILL.md:**
 
@@ -118,18 +119,15 @@ my-plugin/                  ← Plugin root (where skills/, commands/ live)
 
 **Critical**: Skills, commands, agents, and hooks directories must be at the plugin root, NOT inside `.claude-plugin/`.
 
-### Path Configuration in plugin.json
+### Auto-Discovery
 
-Paths in `plugin.json` are relative to the `.claude-plugin/` directory:
+Components in standard directories are auto-discovered:
+- `skills/` - Skills
+- `commands/` - Commands
+- `agents/` - Agents
+- `hooks/` - Hooks
 
-```json
-{
-  "skills": ["../skills"],      // Goes up to plugin root, then into skills/
-  "commands": ["../commands"],
-  "agents": ["../agents"],
-  "hooks": ["../hooks"]
-}
-```
+No path configuration needed in plugin.json for standard locations.
 
 ### Environment Variables
 

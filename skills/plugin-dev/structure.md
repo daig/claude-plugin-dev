@@ -63,12 +63,6 @@ The `plugin.json` file is the plugin manifest. It defines metadata and component
   "repository": "https://github.com/you/my-plugin",
   "bugs": "https://github.com/you/my-plugin/issues",
 
-  "skills": ["../skills"],
-  "commands": ["../commands"],
-  "agents": ["../agents"],
-  "hooks": ["../hooks"],
-  "outputStyles": ["../outputStyles"],
-
   "mcpServers": {
     "my-server": {
       "command": "node",
@@ -120,27 +114,17 @@ The `plugin.json` file is the plugin manifest. It defines metadata and component
 | `repository` | string | URL to source repository |
 | `bugs` | string | URL for bug reports |
 
-### Component Path Fields
+### Auto-Discovered Components
 
-All paths are **relative to the `.claude-plugin/` directory**.
+These directories are **auto-discovered** at the plugin root - no configuration needed:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `skills` | string[] | Paths to skill directories |
-| `commands` | string[] | Paths to command directories |
-| `agents` | string[] | Paths to agent directories |
-| `hooks` | string[] | Paths to hook directories |
-| `outputStyles` | string[] | Paths to output style directories |
-
-**Path examples:**
-
-```json
-{
-  "skills": ["../skills"],           // Plugin root's skills/ directory
-  "skills": ["../skills/subset"],    // Specific subdirectory
-  "skills": ["../skills", "../more-skills"]  // Multiple directories
-}
-```
+| Directory | Purpose |
+|-----------|---------|
+| `skills/` | Skill definitions |
+| `commands/` | Slash commands |
+| `agents/` | Subagents |
+| `hooks/` | Event hooks |
+| `outputStyles/` | Output formatting |
 
 ### Inline Configuration Fields
 
@@ -303,8 +287,7 @@ minimal-skill/
 {
   "name": "minimal-skill",
   "version": "1.0.0",
-  "description": "A minimal skill plugin",
-  "skills": ["../skills"]
+  "description": "A minimal skill plugin"
 }
 ```
 
@@ -322,8 +305,7 @@ minimal-command/
 {
   "name": "minimal-command",
   "version": "1.0.0",
-  "description": "A minimal command plugin",
-  "commands": ["../commands"]
+  "description": "A minimal command plugin"
 }
 ```
 

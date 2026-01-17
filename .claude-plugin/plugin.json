@@ -1,0 +1,12 @@
+{
+  "name": "plugin-dev",
+  "version": "1.0.0",
+  "description": "Learn how to develop Claude Code plugins - covers skills, commands, agents, hooks, MCP servers, LSP servers, and marketplace publishing",
+  "author": {
+    "name": "Dai",
+    "url": "https://github.com/daig"
+  },
+  "repository": "https://github.com/daig/claude-plugin-dev",
+  "license": "MIT",
+  "skills": ["../skills"]
+}
